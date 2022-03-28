@@ -10,7 +10,7 @@
         <tr>
           <th>Name</th>
           <th>Active</th>
-          <th>Dead Letter</th>
+          <th>DLQ</th>
         </tr>
       </thead>
       <tbody>
@@ -26,8 +26,26 @@
   </div>
   <div class="column">
     <h3 class="title is-4">Topics</h3>
-    {% for topic in topics %}
-    {% endfor %}
+    <table class="table table is-narrow table is-hoverable">
+      {% for topic in topics %}
+        <thead>
+          <tr>
+            <th>{{ topic.name }}</th>
+            <th>Active</th>
+            <th>DLQ</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for subscription in topic.subscriptions %}
+          <tr>
+            <td>{{ subscription.subscriptionName }}</td>
+            <td>{{ subscription.activeMessageCount }}</td>
+            <td>{{ subscription.deadLetterMessageCount }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      {% endfor %}
+    </table>
   </div>
 </div>
 
