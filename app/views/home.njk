@@ -18,7 +18,13 @@
         <tr>
           <td>{{ queue.name }}</td>
           <td>{{ queue.activeMessageCount }}</td>
-          <td>{{ queue.deadLetterMessageCount }}</td>
+          <td>
+            {% if queue.deadLetterMessageCount > 0 %}
+              <a href="#">{{ queue.deadLetterMessageCount }}</a>
+            {% else %}
+              {{ queue.deadLetterMessageCount }}
+            {% endif %}
+          </td>
         </tr>
       {% endfor %}
       </tbody>
@@ -40,7 +46,13 @@
           <tr>
             <td>{{ subscription.subscriptionName }}</td>
             <td>{{ subscription.activeMessageCount }}</td>
-            <td>{{ subscription.deadLetterMessageCount }}</td>
+            <td>
+              {% if subscription.deadLetterMessageCount > 0 %}
+                <a href="#">{{ subscription.deadLetterMessageCount }}</a>
+              {% else %}
+                {{ subscription.deadLetterMessageCount }}
+              {% endif %}
+            </td>
           </tr>
         {% endfor %}
         </tbody>
