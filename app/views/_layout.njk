@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ appName }}</title>
-    <link href="{{ assetPath }}/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
-
   <body>
-    {% block content %}
-    {% endblock %}
-    {% block bodyEnd %}
-      <script src="{{ assetPath }}/application.js"></script>
-    {% endblock %}
+    <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <h1 class="title is-3" style="color:white;">{{ appName }}</h1>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
   </body>
-
 </html>
-
-

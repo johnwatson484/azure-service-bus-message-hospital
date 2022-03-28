@@ -4,3 +4,5 @@ services:
     build: .
     image: azure-service-bus-message-hospital
     container_name: azure-service-bus-message-hospital
+    environment:
+      AZURE_SERVICE_BUS_CONNECTION_STRING: ${AZURE_SERVICE_BUS_CONNECTION_STRING}

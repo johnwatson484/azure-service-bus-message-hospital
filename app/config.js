@@ -1,18 +1,20 @@
-const joi = require('joi')
+const Joi = require('joi')
 const envs = ['development', 'test', 'production']
 
 // Define config schema
-const schema = joi.object().keys({
-  port: joi.number().default(3000),
-  env: joi.string().valid(...envs).default(envs[0]),
-  appName: joi.string()
+const schema = Joi.object().keys({
+  port: Joi.number().default(4011),
+  env: Joi.string().valid(...envs).default(envs[0]),
+  appName: Joi.string(),
+  connectionString: Joi.string().required()
 })
 
 // Build config
 const config = {
   port: process.env.PORT,
   env: process.env.NODE_ENV,
-  appName: 'Azure Service Bus Message Hospital'
+  appName: 'Azure Service Bus Message Hospital',
+  connectionString: process.env.AZURE_SERVICE_BUS_CONNECTION_STRING
 }
 
 // Validate config
