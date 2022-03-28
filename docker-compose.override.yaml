@@ -1,0 +1,17 @@
+version: '3.8'
+
+# This override file should be used when running this service in isolation
+# to provide dependencies and expose ports for local testing
+
+services:
+  azure-service-bus-message-hospital:
+    build:
+      target: development
+    image: azure-service-bus-message-hospital-development
+    container_name: azure-service-bus-message-hospital-development
+    ports:
+      - "4011:3000"
+      - "9229:9229"
+    volumes:
+      - ./app:/home/node/app
+      - ./package.json:/home/node/package.json

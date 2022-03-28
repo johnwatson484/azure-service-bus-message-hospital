@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  azure-service-bus-message-hospital:
+    build: .
+    image: azure-service-bus-message-hospital
+    container_name: azure-service-bus-message-hospital
