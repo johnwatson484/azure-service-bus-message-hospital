@@ -1,3 +1,7 @@
+[![Build Status](https://dev.azure.com/johnwatson484/John%20D%20Watson/_apis/build/status/johnwatson484.azure-service-bus-message-hospital?branchName=main)](https://dev.azure.com/johnwatson484/John%20D%20Watson/_build/latest?definitionId=62&branchName=main)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=johnwatson484_azure-service-bus-message-hospital&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=johnwatson484_azure-service-bus-message-hospital)
+[![Known Vulnerabilities](https://snyk.io/test/github/johnwatson484/azure-service-bus-message-hospital/badge.svg)](https://snyk.io/test/github/johnwatson484/azure-service-bus-message-hospital)
+
 # azure-service-bus-message-hospital
 Message hospital for dead letter messages
 
