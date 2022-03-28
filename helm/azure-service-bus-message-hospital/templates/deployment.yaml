@@ -1,0 +1,8 @@
+{{- include "helm-library.deployment" (list . "azure-service-bus-message-hospital.deployment") -}}
+{{- define "azure-service-bus-message-hospital.deployment" -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "helm-library.container" (list . "azure-service-bus-message-hospital.container") }}
+{{- end -}}

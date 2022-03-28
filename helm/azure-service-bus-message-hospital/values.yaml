@@ -1,0 +1,34 @@
+environment: development
+name: azure-service-bus-message-hospital
+image: azure-service-bus-message-hospital
+
+service:
+  port: 80
+
+container:
+  imagePullPolicy: IfNotPresent
+  requestMemory: 60Mi
+  requestCpu: 60m
+  limitMemory: 120Mi
+  limitCpu: 120m
+  readOnlyRootFilesystem: false
+  allowPrivilegeEscalation: false
+  port: 4011
+  connectionString:
+
+ingress:
+  class: nginx
+  host:
+  certIssuer: letsencrypt
+
+deployment:
+  restartPolicy: Always
+  replicas: 1
+  minReadySeconds: 5
+  redeployOnChange: update this field to force a change
+  imagePullSecret:
+  runAsNonRoot: true
+  runAsUser: 1000
+
+secret:
+  type: Opaque
