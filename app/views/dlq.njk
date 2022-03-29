@@ -1,0 +1,36 @@
+{% extends '_layout.njk' %}
+
+{% block content %}
+
+<div class="columns">
+  <div class="column">
+    <h3 class="title is-4">Dead lettered messages</h3>
+    <h4 class="title is-5">{{entityName}}</h4>
+    <table class="table table is-narrow table is-hoverable">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Sequence</th>
+          <th>Dead lettered</th>
+          <th>Reason</th>
+          <th>Detail</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for message in messages %}
+        <tr>
+          <td>{{ message.messageId }}</td>
+          <td>{{ message.sequenceNumber }}</td>
+          <td>{{ message.enqueuedTimeUtc }}</td>
+          <td>{{ message.deadLetterReason }}</td>
+          <td>{{ message.deadLetterErrorDescription }}</td>
+          <td><a href="/review?messageId={{message.messageId}}">Review</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

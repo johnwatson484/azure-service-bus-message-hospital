@@ -20,7 +20,7 @@
           <td>{{ queue.activeMessageCount }}</td>
           <td>
             {% if queue.deadLetterMessageCount > 0 %}
-              <a href="#">{{ queue.deadLetterMessageCount }}</a>
+              <a href="/dlq?queueName={{queue.name}}">{{ queue.deadLetterMessageCount }}</a>
             {% else %}
               {{ queue.deadLetterMessageCount }}
             {% endif %}
@@ -48,7 +48,7 @@
             <td>{{ subscription.activeMessageCount }}</td>
             <td>
               {% if subscription.deadLetterMessageCount > 0 %}
-                <a href="#">{{ subscription.deadLetterMessageCount }}</a>
+                <a href="/dlq?topicName={{topic.name}}&subscriptionName={{subscription.subscriptionName}}">{{ subscription.deadLetterMessageCount }}</a>
               {% else %}
                 {{ subscription.deadLetterMessageCount }}
               {% endif %}

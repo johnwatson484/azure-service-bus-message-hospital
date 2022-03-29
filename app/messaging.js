@@ -1,4 +1,4 @@
-const { ServiceBusAdministrationClient } = require('@azure/service-bus')
+const { ServiceBusAdministrationClient, ServiceBusClient } = require('@azure/service-bus')
 const { connectionString } = require('./config')
 
 const getEntities = async () => {
@@ -24,6 +24,41 @@ const getEntities = async () => {
   }
 }
 
+const getQueueMessages = async (queueName) => {
+  let messages = []
+  const sbClient = new ServiceBusClient(connectionString)
+  const queueReceiver = sbClient.createReceiver(queueName, { subQueueType: 'deadLetter' })
+
+  try {
+    console.log('Attempting to peek 1000 messages at a time')
+    messages = await queueReceiver.peekMessages(1000)
+    console.log(`Got ${messages.length} messages.`)
+    await queueReceiver.close()
+  } finally {
+    await sbClient.close()
+  }
+  console.log(messages)
+  return messages
+}
+
+const getSubscriptionMessages = async (topicName, subscriptionName) => {
+  let messages = []
+  const sbClient = new ServiceBusClient(connectionString)
+  const queueReceiver = sbClient.createReceiver(topicName, subscriptionName, { subQueueType: 'deadLetter' })
+
+  try {
+    console.log('Attempting to peek 1000 messages at a time')
+    messages = await queueReceiver.peekMessages(1000)
+    console.log(`Got ${messages.length} messages.`)
+    await queueReceiver.close()
+  } finally {
+    await sbClient.close()
+  }
+  return messages
+}
+
 module.exports = {
-  getEntities
+  getEntities,
+  getQueueMessages,
+  getSubscriptionMessages
 }
